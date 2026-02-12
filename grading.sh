@@ -16,14 +16,14 @@ do
     then
         cd $repo
     else
-        echo 0
+        echo "$key 0"
         continue
     fi
 
     git checkout cipher
     if [ "$(git branch --show-current)" != "cipher" ]
     then
-        echo 0
+        echo "$key 0"
         cd ..
         continue
     fi
@@ -31,7 +31,7 @@ do
     commit=$(git log -1 --before="$deadline")
     if [ "$commit" = "" ]
     then
-        echo 0
+        echo "$key 0"
         cd ..
         continue
     fi
@@ -39,7 +39,7 @@ do
     javac $program.java
     if [ ! -f "$program.class" ]
     then
-        echo 0
+        echo "$key 0"
         cd ..
         continue
     fi
@@ -48,7 +48,7 @@ do
 
     if [ ! -f "$output" ]
     then
-        echo 0
+        echo "$key 0"
         cd ..
         continue
     fi
